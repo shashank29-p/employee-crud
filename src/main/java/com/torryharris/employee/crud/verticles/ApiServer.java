@@ -51,6 +51,17 @@ public class ApiServer extends AbstractVerticle {
       });
     });
 
+    //worker thread
+    router.get("/emp/:id").handler(routingContext -> {
+      String id = routingContext.request().getParam("id");
+      logger.info("this is event-loop thread");
+      vertx.eventBus().request("getconnection", id, reply -> {
+        if (reply.succeeded()) {
+          routingContext.response().putHeader("content-type", "application/json").setStatusCode(200).end(reply.result().body().toString());
+        }
+      });
+    });
+
 
     router.get("/employees")
       .handler(routingContext -> {

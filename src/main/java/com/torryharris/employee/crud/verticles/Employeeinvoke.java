@@ -6,6 +6,7 @@ import com.torryharris.employee.crud.model.Employee;
 import com.torryharris.employee.crud.model.Response;
 import com.torryharris.employee.crud.util.Utils;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
